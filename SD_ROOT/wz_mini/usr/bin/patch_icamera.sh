@@ -220,9 +220,7 @@ function patch_out_code_test_enable() {
 function patch_wzutil_testconnectbyurl_skip_check() {
 	# For the v2 firmware using the libwyzeUtils.so library only.
 	[ ! -f /opt/wz_mini/tmp/.T20 ]   && return  # Only on the v2
-	[[ "$Version" == "4.61.0.1" ]]   && return
-	[[ "$Version" == "4.36.9.139" ]] && return
-	[[ "$Version" == "4.9.8.1002" ]] || return  # Only supports 4.9.8.1002
+	[[ "$Version" != "4.9.8.1002" ]] && return  # Only supports 4.9.8.1002
 
 	echo -e "\n\n====> Calling ${FUNCNAME[0]}\n"
 
@@ -252,7 +250,7 @@ function patch_wzutil_testconnectbyurl_skip_check() {
 # Applies only to the v2
 function patch_v2_led_connect_led () {
 	# Applies only to this particular firmware in the v2.
-	[[ "$Version" == "4.9.8.1002" ]] || return
+	[[ "$Version" != "4.9.8.1002" ]] && return
 
 	echo -e "\n\n====> Calling ${FUNCNAME[0]}\n"
 
